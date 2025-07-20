@@ -182,7 +182,8 @@ public class Mario extends Actor {
         if (Input.isKeyPressed(KeyEvent.VK_3)) {
             Sound.play("coin");
         }
-
+        
+        /*
         if (Input.isKeyPressed(KeyEvent.VK_K)) {
             kill();
         }
@@ -196,6 +197,7 @@ public class Mario extends Actor {
             getPosition().setX(195 * Map.TILE_SIZE);
             camera.getPosition().setX(195 * Map.TILE_SIZE);
         }
+        */
 
         if (Input.isKeyPressed(KeyEvent.VK_1)) {
             flag.setPositionByCell(0, 1);
