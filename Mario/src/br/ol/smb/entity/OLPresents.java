@@ -93,7 +93,13 @@ public class OLPresents extends Entity {
     public void draw(Graphics2D g) {
         processVerticalDistortion(osig1, olpresentsImage);
         processHorizontalDistortion(osig2, offscreen1Image);
-        g.drawImage(offscreen2Image, 0, 0, null);
+
+        // Calcular las coordenadas para centrar la imagen en la pantalla
+        int x = (Display.SCREEN_WIDTH - offscreen2Image.getWidth()) / 2;
+        int y = (Display.SCREEN_HEIGHT - offscreen2Image.getHeight()) / 2;
+
+        // Dibujar la imagen centrada
+        g.drawImage(offscreen2Image, x, y, null);
         drawFadeEffect(g);
     }
 
@@ -139,5 +145,4 @@ public class OLPresents extends Entity {
     public void onGameStateChanged(GameState newGameState) {
         setVisible(newGameState == OL_PRESENTS);
     }
-    
 }

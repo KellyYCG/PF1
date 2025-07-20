@@ -48,7 +48,7 @@ public class HUD extends Entity {
     @Override
     public void draw(Graphics2D g) {
         // g.drawImage(image, 0, 0, null);
-        bitmapFont.drawText(g, "MARIO", 3, 1);
+        bitmapFont.drawText(g, "MAURO", 3, 1);
         bitmapFont.drawText(g, "WORLD", 18, 1);
         bitmapFont.drawText(g, "TIME", 25, 1);
         bitmapFont.drawText(g, game.getScoreStr(), 3, 2);

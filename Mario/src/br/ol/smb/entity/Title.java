@@ -20,9 +20,7 @@ public class Title extends Entity {
     
     private FadeEffect fadeEffect;
     private BufferedImage titleImage;
-    private String textPressSpaceToStart = "PRESS SPACE TO START";
-    private String textCredit1 = "@1985 NINTENDO";
-    private String textCredit2 = "@2018 PROGRAMMED BY WSB";
+    private String textPressSpaceToStart = "PRESIONA ESPACIO PARA JUGAR";
     
     public Title(Game game) {
         super(game);
@@ -76,24 +74,19 @@ public class Title extends Entity {
         
         boolean blink = (Time.getFixedFrames() % 20) < 13;
         if (blink) {
-            bitmapFont.drawText(g, textPressSpaceToStart, 6, 18);
+            bitmapFont.drawText(g, textPressSpaceToStart, 3, 18); 
         }
         bitmapFont.drawText(g, "TOP- " + game.getHiscoreStr(), 10, 20);
-        bitmapFont.drawText(g, textCredit1, 13, 15);
-        bitmapFont.drawText(g, textCredit2, 4, 23);
     }
 
-    
     @Override
     public void onGameStateChanged(GameState newGameState) {
         if (newGameState == TITLE) {
             ip = 0;
             map.load("1-1");
             setVisible(true);
-        }
-        else {
+        } else {
             setVisible(false);
         }
     }
-    
 }

@@ -240,7 +240,7 @@ public class Mario extends Actor {
         if (!jumping && !collidingWithFloor) {
             return;
         }
-        else if (!jumping && Input.isKeyPressed(KeyEvent.VK_X)) {
+        else if (!jumping && Input.isKeyPressed(KeyEvent.VK_SPACE)) {
             velocity.setY(-5);
             jumping = true;
             jumpingCount = 0;
@@ -248,19 +248,16 @@ public class Mario extends Actor {
         }
         else if (collidingWithFloor) {
             jumping = false;
-            if (Input.isKeyDown(KeyEvent.VK_X)) {
-                Input.keyDownConsumed[KeyEvent.VK_X] = true;
+            if (Input.isKeyDown(KeyEvent.VK_SPACE)) {
+                Input.keyDownConsumed[KeyEvent.VK_SPACE] = true;
             }
         }
-        else if (isCollidingWithCeil()) {
-            jumpingCount = MAX_JUMPING_COUNT;
-        }
-        else if (jumping && Input.isKeyDown(KeyEvent.VK_X) 
+        else if (jumping && Input.isKeyDown(KeyEvent.VK_SPACE) 
                 && jumpingCount < MAX_JUMPING_COUNT) {
-            
             velocity.setY(-5);
             jumpingCount++;
         }
+
         else {
             jumpingCount = MAX_JUMPING_COUNT;
         }
