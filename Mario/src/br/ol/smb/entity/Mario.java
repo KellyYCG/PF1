@@ -134,7 +134,7 @@ public class Mario extends Actor {
 
     @Override
     protected void updateMovement() {
-        updateDebug();
+        //updateDebug();
         updateFireball();
         updateHorizontalMovement();
         updateJumping();
@@ -178,12 +178,16 @@ public class Mario extends Actor {
         }
     }
     
+    
+    //Este metodo esta de más lo cual podemos eliminarlo
+    
+    /*
     private void updateDebug() {
         if (Input.isKeyPressed(KeyEvent.VK_3)) {
             Sound.play("coin");
         }
         
-        /*
+        
         if (Input.isKeyPressed(KeyEvent.VK_K)) {
             kill();
         }
@@ -197,7 +201,7 @@ public class Mario extends Actor {
             getPosition().setX(195 * Map.TILE_SIZE);
             camera.getPosition().setX(195 * Map.TILE_SIZE);
         }
-        */
+        
 
         if (Input.isKeyPressed(KeyEvent.VK_1)) {
             flag.setPositionByCell(0, 1);
@@ -206,6 +210,8 @@ public class Mario extends Actor {
             flag.show();
         }
     }
+    
+    */
     
     private void updateHorizontalMovement() {
         pressingLeft = Input.isKeyDown(KeyEvent.VK_LEFT);
