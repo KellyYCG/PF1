@@ -525,7 +525,7 @@ public class Mauro extends Actor {
         fireMarioStartTime = Time.getCurrentTime();
     }
     
-    /*
+    
     @Override
     public void kill() {
         if (isDead()) {
@@ -538,7 +538,7 @@ public class Mauro extends Actor {
         Music.stop();
         Sound.play("die");
     }    
-    */
+   
     
     
     private void fire() {
