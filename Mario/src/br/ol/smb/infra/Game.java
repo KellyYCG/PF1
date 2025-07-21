@@ -445,13 +445,6 @@ public class Game {
             Sound.play("game_over");
             setGameState(GameState.GAME_OVER);
         
-//        world = nextWorld;
-//        lastCheckpoint = null;
-//        map.load(world);
-//        Music.stop();
-//        Music.play(world);
-//        timeLeft = timeLimit;
-//        setGameState(GameState.START_NEXT_LIFE);
     }
     
 }

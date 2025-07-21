@@ -83,7 +83,7 @@ public class Map {
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
             String line = null;
 
-            // game
+            // Juego
             game.setWorld(level);
             parseTimeLimit(br.readLine());
             parseBackgroundColor(br.readLine());
@@ -92,7 +92,7 @@ public class Map {
             parseNextLevelEntranceCol(br.readLine());
             parseFlagPosition(br.readLine());
             
-            // tiles properties
+            // Propiedades de Tiles
             rigidTiles.clear();
             pushableTiles.clear();
             collectableTiles.clear();

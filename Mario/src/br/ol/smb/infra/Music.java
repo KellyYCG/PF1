@@ -14,7 +14,6 @@ public class Music {
 
     static {
         try {
-            // MidiDevice device = MidiSystem.getMidiDevice(MidiSystem.getMidiDeviceInfo()[0]);
             sequencer = MidiSystem.getSequencer();
             sequencer.open();
         } catch (Exception e) {

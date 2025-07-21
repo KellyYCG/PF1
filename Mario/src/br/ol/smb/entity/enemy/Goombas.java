@@ -28,13 +28,4 @@ public class Goombas extends Enemy {
     protected void killedFromGround() {
         super.killedFromGround();
     }
-    
-//    @Override
-//    protected void onStateChanged(State newState) {
-//        if (newState == State.DYING) {
-//            tileId = 2227; // dead 
-//            animation = null;
-//        }
-//    }
-    
 }
