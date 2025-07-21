@@ -22,7 +22,7 @@ public class Game {
 
     public static enum GameState { 
         INITIALIZING, OL_PRESENTS, TITLE, START_GAME, START_NEXT_LIFE, LIVES_PRESENTATION
-        , PLAYING, MARIO_TRANSFORMING, LEVEL_CLEARED, TIME_UP, GAME_OVER, GAME_CLEARED }
+        , PLAYING, MAURO_TRANSFORMING, LEVEL_CLEARED, TIME_UP, GAME_OVER, GAME_CLEARED }
     
     public static final boolean DRAW_DEBUG = false;
     public static final Vec2 GRAVITY = new Vec2(0, 0.5);

@@ -27,7 +27,7 @@ public class Koopas extends Enemy {
     }
 
     @Override
-    protected void onStampedByMario() {
+    protected void onStampedByMauro() {
         switch (koopasState) {
             case NORMAL:
             case BOWLING:

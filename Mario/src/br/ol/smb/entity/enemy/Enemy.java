@@ -91,8 +91,8 @@ public class Enemy extends Actor {
     @Override
     public void onHorizontalEntityCollision(Entity otherEntity) {
         if (otherEntity instanceof Mauro && !mauro.isDead() && !isDead()) {
-            if (mauro.isInvincibleMario()) {
-                killedByInvencibleMario();
+            if (mauro.isInvincibleMauro()) {
+                killedByInvencibleMauro();
             }
             else if (dangerous && !mauro.isImmortal()) {
                 mauro.applyDamage();
@@ -125,7 +125,7 @@ public class Enemy extends Actor {
     public void onVerticalEntityCollision(Entity otherEntity) {
         if (otherEntity instanceof Mauro && !isDead()) {
             if (!mauro.isDead() && mauro.getVelocity().getY() > 0) {
-                onStampedByMario();
+                onStampedByMauro();
             }
         }
         else if (canKillOtherEnemies && otherEntity instanceof Enemy && !isDead()) {
@@ -141,8 +141,8 @@ public class Enemy extends Actor {
         direction *= -1;
     }    
 
-    protected void onStampedByMario() {
-        killedByMarioStamp();
+    protected void onStampedByMauro() {
+        killedByMauroStamp();
         mauro.onEnemyKilledByStump();
         Sound.play("squish");
     }
@@ -160,7 +160,7 @@ public class Enemy extends Actor {
         Sound.play("kick");
     }
     
-    protected void killedByInvencibleMario() {
+    protected void killedByInvencibleMauro() {
         killedFromGround();
         Sound.play("kick");
     }
@@ -170,7 +170,7 @@ public class Enemy extends Actor {
         Sound.play("kick");
     }
     
-    protected void killedByMarioStamp() {
+    protected void killedByMauroStamp() {
         deadByGround = false;
         kill();
     }

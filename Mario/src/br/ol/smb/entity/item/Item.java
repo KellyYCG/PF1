@@ -11,7 +11,7 @@ public class Item extends Actor {
     protected Mauro mauro;
     protected Tile tile;
     protected int endTileId;
-    protected boolean getByMario;
+    protected boolean getByMauro;
     protected String extraData;
     
     public Item() {
@@ -57,27 +57,27 @@ public class Item extends Actor {
 
     @Override
     public void onHorizontalEntityCollision(Entity otherEntity) {
-        if (!getByMario && otherEntity instanceof Mauro) {
+        if (!getByMauro && otherEntity instanceof Mauro) {
             Mauro player = (Mauro) otherEntity;
             if (!player.isDead()) {
-                getByMario = true;
-                onGetByMario();
+                getByMauro = true;
+                onGetByMauro();
             }
         }
     }
 
     @Override
     public void onVerticalEntityCollision(Entity otherEntity) {
-        if (!getByMario && otherEntity instanceof Mauro) {
+        if (!getByMauro && otherEntity instanceof Mauro) {
             Mauro player = (Mauro) otherEntity;
             if (!player.isDead()) {
-                getByMario = true;
-                onGetByMario();
+                getByMauro = true;
+                onGetByMauro();
             }
         }
     }
 
-    protected void onGetByMario() {
+    protected void onGetByMauro() {
     }    
 
 }

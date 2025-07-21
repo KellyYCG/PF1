@@ -23,7 +23,7 @@ public class Flower extends Item {
     }
 
     @Override
-    protected void onGetByMario() {
+    protected void onGetByMauro() {
         game.spawnPoint(1000, position.getX(), position.getY() - Map.TILE_SIZE);
         mauro.transform(FIRE);
         setDestroyed(true);

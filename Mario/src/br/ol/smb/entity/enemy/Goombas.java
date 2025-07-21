@@ -13,10 +13,10 @@ public class Goombas extends Enemy {
     }
 
     @Override
-    protected void killedByMarioStamp() {
+    protected void killedByMauroStamp() {
         tileId = 2227; // dead 
         animation = null;
-        super.killedByMarioStamp();
+        super.killedByMauroStamp();
     }
 
     @Override

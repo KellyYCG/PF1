@@ -35,7 +35,7 @@ public class Mushroom extends Item {
     }
     
     @Override
-    protected void onGetByMario() {
+    protected void onGetByMauro() {
         game.spawnPoint(1000, position.getX(), position.getY() - 1.5 * Map.TILE_SIZE);
         mauro.transform(SUPER);
         setDestroyed(true);
