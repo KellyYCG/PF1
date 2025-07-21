@@ -1,7 +1,7 @@
 package br.ol.smb.entity.enemy;
 
 import br.ol.smb.entity.Actor;
-import br.ol.smb.entity.Mario;
+import br.ol.smb.entity.Mauro;
 import br.ol.smb.infra.Entity;
 import br.ol.smb.infra.Game;
 import br.ol.smb.infra.Map;
@@ -11,7 +11,7 @@ import java.awt.Color;
 
 public class Enemy extends Actor {
     
-    protected Mario mario;
+    protected Mauro mauro;
     protected double direction = -0.5;
     protected boolean insideView = false;
     
@@ -32,7 +32,7 @@ public class Enemy extends Actor {
     @Override
     public void start() {
         super.start();
-        mario = game.getEntity(Mario.class);
+        mauro = game.getEntity(Mauro.class);
         setzOrder(3);
         tileId = 2225;
         setAnimation(2225, 2226);
@@ -90,12 +90,12 @@ public class Enemy extends Actor {
 
     @Override
     public void onHorizontalEntityCollision(Entity otherEntity) {
-        if (otherEntity instanceof Mario && !mario.isDead() && !isDead()) {
-            if (mario.isInvincibleMario()) {
+        if (otherEntity instanceof Mauro && !mauro.isDead() && !isDead()) {
+            if (mauro.isInvincibleMario()) {
                 killedByInvencibleMario();
             }
-            else if (dangerous && !mario.isImmortal()) {
-                mario.applyDamage();
+            else if (dangerous && !mauro.isImmortal()) {
+                mauro.applyDamage();
             }
         }
         
@@ -123,8 +123,8 @@ public class Enemy extends Actor {
 
     @Override
     public void onVerticalEntityCollision(Entity otherEntity) {
-        if (otherEntity instanceof Mario && !isDead()) {
-            if (!mario.isDead() && mario.getVelocity().getY() > 0) {
+        if (otherEntity instanceof Mauro && !isDead()) {
+            if (!mauro.isDead() && mauro.getVelocity().getY() > 0) {
                 onStampedByMario();
             }
         }
@@ -143,7 +143,7 @@ public class Enemy extends Actor {
 
     protected void onStampedByMario() {
         killedByMarioStamp();
-        mario.onEnemyKilledByStump();
+        mauro.onEnemyKilledByStump();
         Sound.play("squish");
     }
     

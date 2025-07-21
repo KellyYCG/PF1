@@ -16,7 +16,7 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Mario extends Actor {
+public class Mauro extends Actor {
     
     private ImpactStrength impactStrength = ImpactStrength.WEAK;
     private static final int MAX_JUMPING_COUNT = 10;
@@ -51,7 +51,7 @@ public class Mario extends Actor {
     // level cleared flag
     private Flag flag;
     
-    public Mario(Game game) {
+    public Mauro(Game game) {
         super(game);
         createFireballsCache();
         setUnremovable(true);
@@ -178,41 +178,6 @@ public class Mario extends Actor {
         }
     }
     
-    
-    //Este metodo esta de más lo cual podemos eliminarlo
-    
-    /*
-    private void updateDebug() {
-        if (Input.isKeyPressed(KeyEvent.VK_3)) {
-            Sound.play("coin");
-        }
-        
-        
-        if (Input.isKeyPressed(KeyEvent.VK_K)) {
-            kill();
-        }
-
-        if (Input.isKeyPressed(KeyEvent.VK_E)) {
-            Explosion explosion = new Explosion(game);
-            explosion.spawn(position.getX(), position.getY());
-        }
-
-        if (Input.isKeyPressed(KeyEvent.VK_F)) {
-            getPosition().setX(195 * Map.TILE_SIZE);
-            camera.getPosition().setX(195 * Map.TILE_SIZE);
-        }
-        
-
-        if (Input.isKeyPressed(KeyEvent.VK_1)) {
-            flag.setPositionByCell(0, 1);
-        }
-        if (Input.isKeyPressed(KeyEvent.VK_2)) {
-            flag.show();
-        }
-    }
-    
-    */
-    
     private void updateHorizontalMovement() {
         pressingLeft = Input.isKeyDown(KeyEvent.VK_LEFT);
         pressingRight = Input.isKeyDown(KeyEvent.VK_RIGHT);
@@ -313,21 +278,13 @@ public class Mario extends Actor {
             Music.play(game.getWorld());
         }
         
-        // fire mario
+        // Fuego
         if (isFireMario()) {
             fireMarioAnimationOffset = 6 * spriteSheet.getCols();
         }
         else {
             fireMarioAnimationOffset = 0;
         }
-        
-//        if (isFireMario() && Time.getCurrentTime() - fireMarioStartTime < 10) {
-//            fireMarioAnimationOffset = 6 * spriteSheet.getCols();
-//        }
-//        else if (isFireMario()) {
-//            fireMario = false;
-//            fireMarioAnimationOffset = 0;
-//        }
         
         // if immortal, blink quickly
         if (immortal && Time.getCurrentTime() - immortalStartTime < 3) {
@@ -445,16 +402,9 @@ public class Mario extends Actor {
     }
     
     private void updateTransformingToInvincibleMario() {
-        //transformationVelocity -= 4 * Time.getFixedDeltaTime();
-        //transformationFrame += 0.75 * transformationVelocity * Time.getFixedDeltaTime();
-        //int frame = 3 + ((int) transformationFrame % 4);
-        //invincibleMarioAnimationOffset = frame * (3 * spriteSheet.getCols());
-        //updateAnimation();
-        //if (transformationVelocity <= 11) {
-            Music.play("invincible");
-            transformToInvicibleMario();
-            game.setGameState(PLAYING);
-        //}
+    	Music.play("invincible");
+        transformToInvicibleMario();
+        game.setGameState(PLAYING);
     }
     
     @Override
@@ -575,6 +525,7 @@ public class Mario extends Actor {
         fireMarioStartTime = Time.getCurrentTime();
     }
     
+    /*
     @Override
     public void kill() {
         if (isDead()) {
@@ -587,7 +538,9 @@ public class Mario extends Actor {
         Music.stop();
         Sound.play("die");
     }    
-
+    */
+    
+    
     private void fire() {
         for (Fireball fireball : fireballs) {
             if (fireball.isFree()) {
@@ -599,7 +552,7 @@ public class Mario extends Actor {
         }
     }
 
-    // level cleared
+    // Nivel desde 0
     
     private int ip;
     private double waitTime;
@@ -690,7 +643,7 @@ public class Mario extends Actor {
         }
     }
     
-    // game started or when start next life
+    //Metodos para que el juego comience o cuando pasa la siguiente vida
 
     @Override
     protected void updateStartGame() {
@@ -702,7 +655,7 @@ public class Mario extends Actor {
         game.setGameState(LIVES_PRESENTATION);
     }
     
-    // move mario randomically in the title screen
+    //El mauro se mueve aleatoriamente en la pagina de inicio
     
     protected double direction = -1;
     private int nextWalkDuration = 60;

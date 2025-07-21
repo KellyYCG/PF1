@@ -1,6 +1,6 @@
 package br.ol.smb.entity.item;
 
-import static br.ol.smb.entity.Mario.Transformation.*;
+import static br.ol.smb.entity.Mauro.Transformation.*;
 import br.ol.smb.infra.Map;
 import br.ol.smb.infra.Sound;
 
@@ -25,7 +25,7 @@ public class Flower extends Item {
     @Override
     protected void onGetByMario() {
         game.spawnPoint(1000, position.getX(), position.getY() - Map.TILE_SIZE);
-        mario.transform(FIRE);
+        mauro.transform(FIRE);
         setDestroyed(true);
     }
 

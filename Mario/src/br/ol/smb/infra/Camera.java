@@ -1,13 +1,13 @@
 package br.ol.smb.infra;
 
-import br.ol.smb.entity.Mario;
+import br.ol.smb.entity.Mauro;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
 
 public class Camera extends Entity {
     
-    private Mario mario;
+    private Mauro mauro;
     private double minX;
 
     public Camera(Game scene) {
@@ -17,7 +17,7 @@ public class Camera extends Entity {
 
     @Override
     public void start() {
-        mario = game.getEntity(Mario.class);
+        mauro = game.getEntity(Mauro.class);
         tileId = 0;
         reset();
     }
@@ -66,7 +66,7 @@ public class Camera extends Entity {
             minX = position.getX();
         }
         double cx = position.getX();
-        cx += (mario.getPosition().getX() - position.getX()) * 0.1;
+        cx += (mauro.getPosition().getX() - position.getX()) * 0.1;
         cx = MathUtil.clamp(cx, minX, map.getWidth() - getWidth() / 2);
         position.setX(cx);
     }

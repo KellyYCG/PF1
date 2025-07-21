@@ -5,7 +5,7 @@ import br.ol.smb.entity.FadeEffect;
 import br.ol.smb.entity.Flag;
 import br.ol.smb.entity.HUD;
 import br.ol.smb.entity.Initializer;
-import br.ol.smb.entity.Mario;
+import br.ol.smb.entity.Mauro;
 import br.ol.smb.entity.OLPresents;
 import br.ol.smb.entity.Point;
 import br.ol.smb.entity.Screen;
@@ -267,7 +267,7 @@ public class Game {
         addEntityLocal(flag = new Flag(this));
         addEntityLocal(new Tilemap(this));
         addEntityLocal(new BrickPushing(this));
-        addEntityLocal(new Mario(this));
+        addEntityLocal(new Mauro(this));
         addEntityLocal(new Screen(this));
         addEntityLocal(new HUD(this));
         addEntityLocal(new FadeEffect(this));
@@ -369,7 +369,7 @@ public class Game {
         resultEntities.clear();
         for (Entity entity : entities) {
             if (!(entity instanceof Camera)
-                    && !(entity instanceof Mario)
+                    && !(entity instanceof Mauro)
                     && area.intersects(entity.getCollider())) {
                 resultEntities.add(entity);
             }

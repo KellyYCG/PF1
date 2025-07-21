@@ -36,22 +36,22 @@ public class Koopas extends Enemy {
                 dangerous = false;
                 canKillOtherEnemies = false;
                 direction = 0;
-                mario.getVelocity().setY(-7);
-                while (getCollider().intersects(mario.getCollider())) {
-                    mario.getPosition().translate(0, -1);
+                mauro.getVelocity().setY(-7);
+                while (getCollider().intersects(mauro.getCollider())) {
+                    mauro.getPosition().translate(0, -1);
                 }
                 game.spawnPoint(WAITING_POINT, position.getX(), position.getY() - Map.TILE_SIZE);
                 koopasState = KoopasState.WAITING;
                 break;
             case WAITING:
-                direction = mario.getPosition().getX() > getPosition().getX() ? -SPEED : SPEED;
+                direction = mauro.getPosition().getX() > getPosition().getX() ? -SPEED : SPEED;
                 dangerous = true;
                 canKillOtherEnemies = true;
-                mario.getVelocity().setY(-7);
-                while (getCollider().intersects(mario.getCollider())) {
-                    mario.getPosition().translate(0, -1);
+                mauro.getVelocity().setY(-7);
+                while (getCollider().intersects(mauro.getCollider())) {
+                    mauro.getPosition().translate(0, -1);
                 }
-                mario.getPosition().translate(2, -32);
+                mauro.getPosition().translate(2, -32);
                 koopasState = KoopasState.BOWLING;
                 game.spawnPoint(BOWLING_POINT, position.getX(), position.getY() - Map.TILE_SIZE);
                 break;
@@ -65,9 +65,9 @@ public class Koopas extends Enemy {
             case NORMAL:
                 break;
             case WAITING:
-                direction = mario.getPosition().getX() > getPosition().getX() ? -SPEED : SPEED;
-                while (mario.getCollider().intersects(getCollider())) {
-                    mario.getPosition().translate(-direction, 0);
+                direction = mauro.getPosition().getX() > getPosition().getX() ? -SPEED : SPEED;
+                while (mauro.getCollider().intersects(getCollider())) {
+                    mauro.getPosition().translate(-direction, 0);
                 }
                 dangerous = true;
                 canKillOtherEnemies = true;

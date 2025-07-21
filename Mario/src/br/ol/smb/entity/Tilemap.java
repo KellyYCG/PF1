@@ -16,7 +16,7 @@ import java.util.List;
 public class Tilemap extends Entity {
     
     private Camera camera;
-    private Mario mario;
+    private Mauro mauro;
     private BrickPushing block;
     private final List<Tile> tilesTmp = new ArrayList<Tile>();
     
@@ -29,13 +29,13 @@ public class Tilemap extends Entity {
     public void start() {
         setzOrder(1);
         camera = game.getEntity(Camera.class);
-        mario = game.getEntity(Mario.class);
+        mauro = game.getEntity(Mauro.class);
         block = game.getEntity(BrickPushing.class);
     }
     
     @Override
     public void updatePlaying() {
-        Rectangle playerCollider = mario.getCollider();
+        Rectangle playerCollider = mauro.getCollider();
         map.retrieveTiles(playerCollider, tilesTmp);
         for (Tile tile : tilesTmp) {
             if (tile.isCollectable() 
@@ -115,12 +115,12 @@ public class Tilemap extends Entity {
             game.retrieveEntities(blockArea, entitiesTmp);
             for (Entity entity : entitiesTmp) {
                 if (blockArea.intersects(entity.getCollider())) {
-                    entity.onImpactFromGround(mario.getImpactStrength());
+                    entity.onImpactFromGround(mauro.getImpactStrength());
                 }
             }
             // tile
             Tile tile = map.getTileByCell(col, row - 1);
-            tile.onImpactFromGround(mario.getImpactStrength());
+            tile.onImpactFromGround(mauro.getImpactStrength());
         }
     }
 
