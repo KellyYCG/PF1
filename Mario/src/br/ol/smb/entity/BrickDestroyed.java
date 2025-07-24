@@ -22,10 +22,7 @@ public class BrickDestroyed extends Entity {
     private double angle;
     private double angularVelocity;
     
-    // part:
-    // 0|1
-    // -+-
-    // 2|3
+    
     public BrickDestroyed(Game game, int col, int row, int part) {
         super(game);
         tile = map.getTileByCell(col, row);
@@ -61,7 +58,7 @@ public class BrickDestroyed extends Entity {
 
     @Override
     public void draw(Graphics2D g) {
-        // TODO: think another way draw this without getTransfom() (?)
+        
         AffineTransform at = g.getTransform();
         g.translate((int) position.getX(), (int) position.getY());
         g.rotate(angle);
@@ -82,20 +79,6 @@ public class BrickDestroyed extends Entity {
         g.drawImage(image, dx1, dy1, dx2, dy2, sx1, sy1, sx2, sy2, null);
         
         g.setTransform(at);
-        
-//        int id = tile.getId() - 1;
-//        int dx1 = (int) position.getX();
-//        int dy1 = (int) position.getY();
-//        int dx2 = dx1 + 8;
-//        int dy2 = dy1 + 8;
-//        int scol = id % spriteSheet.getCols();
-//        int srow = id / spriteSheet.getCols(); 
-//        int sx1 = scol * Map.TILE_SIZE + offsets[part][0];
-//        int sy1 = srow * Map.TILE_SIZE + offsets[part][1];
-//        int sx2 = sx1 + 8;
-//        int sy2 = sy1 + 8;
-//        Image image = spriteSheet.getImage();
-//        g.drawImage(image, dx1, dy1, dx2, dy2, sx1, sy1, sx2, sy2, null);
     }
     
 }

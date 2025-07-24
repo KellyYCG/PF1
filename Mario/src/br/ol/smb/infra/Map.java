@@ -83,7 +83,7 @@ public class Map {
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
             String line = null;
 
-            // game
+            // Juego
             game.setWorld(level);
             parseTimeLimit(br.readLine());
             parseBackgroundColor(br.readLine());
@@ -92,7 +92,7 @@ public class Map {
             parseNextLevelEntranceCol(br.readLine());
             parseFlagPosition(br.readLine());
             
-            // tiles properties
+            // Propiedades de Tiles
             rigidTiles.clear();
             pushableTiles.clear();
             collectableTiles.clear();
@@ -101,13 +101,13 @@ public class Map {
                 parseLineTileProperties(line);
             }
 
-            // animations
+            // Animaciones
             animations.clear();
             while (!"#map".equals(line = br.readLine())) {
                 parseLineAnimations(line);
             }
 
-            // map
+            // Mapa
             cols = Integer.parseInt(br.readLine());
             rows = Integer.parseInt(br.readLine());
             tiles = new Tile[rows][cols];
@@ -116,17 +116,17 @@ public class Map {
             }
             while (!"#items".equals(br.readLine())) {}
             
-            // objects
+            // Objeto
             while (!"#enemies".equals(line = br.readLine())) {
                 parseLineItem(line);
             }
 
-            // enemies
+            // Enemigos
             while (!"#checkpoints".equals(line = br.readLine())) {
                 parseLineEnemy(line);
             }
 
-            // checkpoints
+            // Checkpoints
             while (!"#end".equals(line = br.readLine())) {
                 parseLineCheckpoint(line);
             }

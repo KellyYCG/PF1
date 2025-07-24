@@ -13,10 +13,10 @@ public class Goombas extends Enemy {
     }
 
     @Override
-    protected void killedByMarioStamp() {
+    protected void killedByMauroStamp() {
         tileId = 2227; // dead 
         animation = null;
-        super.killedByMarioStamp();
+        super.killedByMauroStamp();
     }
 
     @Override
@@ -28,13 +28,4 @@ public class Goombas extends Enemy {
     protected void killedFromGround() {
         super.killedFromGround();
     }
-    
-//    @Override
-//    protected void onStateChanged(State newState) {
-//        if (newState == State.DYING) {
-//            tileId = 2227; // dead 
-//            animation = null;
-//        }
-//    }
-    
 }

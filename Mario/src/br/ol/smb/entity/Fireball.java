@@ -33,10 +33,10 @@ public class Fireball extends Actor {
         return free;
     }
 
-    public void spawn(Mario mario) {
-        double wx = mario.getPosition().getX();
-        double wy = mario.getPosition().getY() - mario.getCollider().getHeight() / 2;
-        direction = mario.getLastDirection() == LastDirection.RIGHT ? 3 : -3;
+    public void spawn(Mauro mauro) {
+        double wx = mauro.getPosition().getX();
+        double wy = mauro.getPosition().getY() - mauro.getCollider().getHeight() / 2;
+        direction = mauro.getLastDirection() == LastDirection.RIGHT ? 3 : -3;
         velocity.set(direction, -2);
         position.set(wx + 3 * direction, wy);
         setVisible(true);

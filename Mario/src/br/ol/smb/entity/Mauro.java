@@ -16,7 +16,7 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Mario extends Actor {
+public class Mauro extends Actor {
     
     private ImpactStrength impactStrength = ImpactStrength.WEAK;
     private static final int MAX_JUMPING_COUNT = 10;
@@ -25,9 +25,9 @@ public class Mario extends Actor {
     private boolean jumping;
     private int jumpingCount;
     private boolean killedEnemy;
-    private int superMarioAnimationOffset;
-    private int invincibleMarioAnimationOffset;
-    private int fireMarioAnimationOffset;
+    private int superMauroAnimationOffset;
+    private int invincibleMauroAnimationOffset;
+    private int fireMauroAnimationOffset;
     private double deadTime;
     private boolean killedByTimeLeft;
     private boolean pressingLeft;
@@ -36,11 +36,11 @@ public class Mario extends Actor {
     // additional states
     public static enum Transformation { NONE, NORMAL, SUPER, INVINCIBLE, FIRE }
     private Transformation transformation = Transformation.NONE;
-    private boolean superMario;
-    private boolean invincibleMario;
-    private double invincibleMarioStartTime;
-    private boolean fireMario;
-    private double fireMarioStartTime;
+    private boolean superMauro;
+    private boolean invincibleMauro;
+    private double invincibleMauroStartTime;
+    private boolean fireMauro;
+    private double fireMauroStartTime;
     private double transformationFrame;
     private double transformationVelocity;
     
@@ -51,7 +51,7 @@ public class Mario extends Actor {
     // level cleared flag
     private Flag flag;
     
-    public Mario(Game game) {
+    public Mauro(Game game) {
         super(game);
         createFireballsCache();
         setUnremovable(true);
@@ -72,17 +72,17 @@ public class Mario extends Actor {
         jumping = false;
         jumpingCount = 0;
         killedEnemy = false;
-        superMarioAnimationOffset = 0;
-        invincibleMarioAnimationOffset = 0;
-        fireMarioAnimationOffset = 0;
+        superMauroAnimationOffset = 0;
+        invincibleMauroAnimationOffset = 0;
+        fireMauroAnimationOffset = 0;
         deadTime = 0;
         killedByTimeLeft = false;
         transformation = Transformation.NONE;
-        superMario = false;
-        invincibleMario = false;
-        invincibleMarioStartTime = 0;
-        fireMario = false;
-        fireMarioStartTime = 0;
+        superMauro = false;
+        invincibleMauro = false;
+        invincibleMauroStartTime = 0;
+        fireMauro = false;
+        fireMauroStartTime = 0;
         transformationFrame = 0;
         transformationVelocity = 0;
     }
@@ -106,16 +106,16 @@ public class Mario extends Actor {
         return impactStrength;
     }
 
-    public boolean isSuperMario() {
-        return superMario;
+    public boolean isSuperMauro() {
+        return superMauro;
     }
 
-    public boolean isInvincibleMario() {
-        return invincibleMario;
+    public boolean isInvincibleMauro() {
+        return invincibleMauro;
     }
 
-    public boolean isFireMario() {
-        return fireMario;
+    public boolean isFireMauro() {
+        return fireMauro;
     }
 
     @Override
@@ -134,7 +134,7 @@ public class Mario extends Actor {
 
     @Override
     protected void updateMovement() {
-        updateDebug();
+        //updateDebug();
         updateFireball();
         updateHorizontalMovement();
         updateJumping();
@@ -170,38 +170,11 @@ public class Mario extends Actor {
     }
     
     private void updateFireball() {
-        boolean canFire = isFireMario() 
+        boolean canFire = isFireMauro() 
                 && Time.getCurrentTime() - lastFireTime > 0.1;
         
         if (Input.isKeyPressed(KeyEvent.VK_Z) && canFire) {
             fire();
-        }
-    }
-    
-    private void updateDebug() {
-        if (Input.isKeyPressed(KeyEvent.VK_3)) {
-            Sound.play("coin");
-        }
-
-        if (Input.isKeyPressed(KeyEvent.VK_K)) {
-            kill();
-        }
-
-        if (Input.isKeyPressed(KeyEvent.VK_E)) {
-            Explosion explosion = new Explosion(game);
-            explosion.spawn(position.getX(), position.getY());
-        }
-
-        if (Input.isKeyPressed(KeyEvent.VK_F)) {
-            getPosition().setX(195 * Map.TILE_SIZE);
-            camera.getPosition().setX(195 * Map.TILE_SIZE);
-        }
-
-        if (Input.isKeyPressed(KeyEvent.VK_1)) {
-            flag.setPositionByCell(0, 1);
-        }
-        if (Input.isKeyPressed(KeyEvent.VK_2)) {
-            flag.show();
         }
     }
     
@@ -294,32 +267,24 @@ public class Mario extends Actor {
     
     private void updateAdditionalStates() {
         // invecible update palette animation
-        if (isInvincibleMario() && Time.getCurrentTime() - invincibleMarioStartTime < 10) {
+        if (isInvincibleMauro() && Time.getCurrentTime() - invincibleMauroStartTime < 10) {
             int frame = 3 + ((Time.getFixedFrames() / 3) % 4);
-            invincibleMarioAnimationOffset = frame * (3 * spriteSheet.getCols());
+            invincibleMauroAnimationOffset = frame * (3 * spriteSheet.getCols());
         }
-        else if (isInvincibleMario()) {
-            invincibleMario = false;
-            invincibleMarioAnimationOffset = 0;
+        else if (isInvincibleMauro()) {
+            invincibleMauro = false;
+            invincibleMauroAnimationOffset = 0;
             Music.stop();
             Music.play(game.getWorld());
         }
         
-        // fire mario
-        if (isFireMario()) {
-            fireMarioAnimationOffset = 6 * spriteSheet.getCols();
+        // Fuego
+        if (isFireMauro()) {
+            fireMauroAnimationOffset = 6 * spriteSheet.getCols();
         }
         else {
-            fireMarioAnimationOffset = 0;
+            fireMauroAnimationOffset = 0;
         }
-        
-//        if (isFireMario() && Time.getCurrentTime() - fireMarioStartTime < 10) {
-//            fireMarioAnimationOffset = 6 * spriteSheet.getCols();
-//        }
-//        else if (isFireMario()) {
-//            fireMario = false;
-//            fireMarioAnimationOffset = 0;
-//        }
         
         // if immortal, blink quickly
         if (immortal && Time.getCurrentTime() - immortalStartTime < 3) {
@@ -332,8 +297,8 @@ public class Mario extends Actor {
     }
     
     private int getAnimationOffset() {
-        return superMarioAnimationOffset + invincibleMarioAnimationOffset 
-                + fireMarioAnimationOffset;
+        return superMauroAnimationOffset + invincibleMauroAnimationOffset 
+                + fireMauroAnimationOffset;
     }
     
     @Override
@@ -382,23 +347,23 @@ public class Mario extends Actor {
     }
 
     @Override
-    protected void fixedUpdateMarioTransforming() {
+    protected void fixedUpdateMauroTransforming() {
         switch (transformation) {
-            case NORMAL : updateTransformingToNormalMario(); break;
-            case SUPER : updateTransformingToSuperMario(); break;  
-            case INVINCIBLE : updateTransformingToInvincibleMario(); break;
-            case FIRE : updateTransformingToFireMario(); break;
+            case NORMAL : updateTransformingToNormalMauro(); break;
+            case SUPER : updateTransformingToSuperMauro(); break;  
+            case INVINCIBLE : updateTransformingToInvincibleMauro(); break;
+            case FIRE : updateTransformingToFireMauro(); break;
         }
     }
     
-    private void updateTransformingToSuperMario() {
+    private void updateTransformingToSuperMauro() {
         transformationVelocity -= 4.5 * Time.getFixedDeltaTime();
         transformationFrame += transformationVelocity * Time.getFixedDeltaTime();
         if (((int) transformationFrame % 2) != 0 || transformationVelocity <= 11)  {
-            transformToSuperMario();
+            transformToSuperMauro();
         }
         else {
-            transformToNormalMario();
+            transformToNormalMauro();
         }
         updateAdditionalStates();
         updateAnimation();
@@ -407,14 +372,14 @@ public class Mario extends Actor {
         }
     }
 
-    private void updateTransformingToNormalMario() {
+    private void updateTransformingToNormalMauro() {
         transformationVelocity -= 4 * Time.getFixedDeltaTime();
         transformationFrame += transformationVelocity * Time.getFixedDeltaTime();
         if (((int) transformationFrame % 2) != 0 || transformationVelocity <= 11)  {
-            transformToNormalMario();
+            transformToNormalMauro();
         }
         else {
-            transformToSuperMario();
+            transformToSuperMauro();
         }
         updateAdditionalStates();
         updateAnimation();
@@ -424,29 +389,22 @@ public class Mario extends Actor {
         }
     }
     
-    private void updateTransformingToFireMario() {
+    private void updateTransformingToFireMauro() {
         transformationVelocity -= 4 * Time.getFixedDeltaTime();
         transformationFrame += 0.75 * transformationVelocity * Time.getFixedDeltaTime();
         int frame = 3 + ((int) transformationFrame % 4);
-        fireMarioAnimationOffset = frame * (3 * spriteSheet.getCols());
+        fireMauroAnimationOffset = frame * (3 * spriteSheet.getCols());
         updateAnimation();
         if (transformationVelocity <= 11) {
-            transformToFireMario();
+            transformToFireMauro();
             game.setGameState(PLAYING);
         }
     }
     
-    private void updateTransformingToInvincibleMario() {
-        //transformationVelocity -= 4 * Time.getFixedDeltaTime();
-        //transformationFrame += 0.75 * transformationVelocity * Time.getFixedDeltaTime();
-        //int frame = 3 + ((int) transformationFrame % 4);
-        //invincibleMarioAnimationOffset = frame * (3 * spriteSheet.getCols());
-        //updateAnimation();
-        //if (transformationVelocity <= 11) {
-            Music.play("invincible");
-            transformToInvicibleMario();
-            game.setGameState(PLAYING);
-        //}
+    private void updateTransformingToInvincibleMauro() {
+    	Music.play("invincible");
+        transformToInvicibleMauro();
+        game.setGameState(PLAYING);
     }
     
     @Override
@@ -505,7 +463,7 @@ public class Mario extends Actor {
 
     @Override
     public void applyDamage() {
-        if (superMario) {
+        if (superMauro) {
             transform(Transformation.NORMAL);
         }
         else {
@@ -519,53 +477,54 @@ public class Mario extends Actor {
         this.transformation = transformation;
         switch (transformation) {
             case NORMAL : 
-                fireMario = false;
-                transformToNormalMario(); 
+                fireMauro = false;
+                transformToNormalMauro(); 
                 Sound.play("warp");
                 break;
             case SUPER : 
-                transformToSuperMario(); 
+                transformToSuperMauro(); 
                 Sound.play("power_up");
                 break;  
             case INVINCIBLE : 
-                transformToInvicibleMario(); 
+                transformToInvicibleMauro(); 
                 Music.stop();
                 Sound.play("power_up");
                 break;  
             case FIRE : 
-                transformToFireMario(); 
+                transformToFireMauro(); 
                 Sound.play("power_up");
                 break;  
         }
-        game.setGameState(MARIO_TRANSFORMING);
+        game.setGameState(MAURO_TRANSFORMING);
         setVisible(true);
     }
     
-    private void transformToNormalMario() {
-        superMario = false;
+    private void transformToNormalMauro() {
+        superMauro = false;
         impactStrength = ImpactStrength.WEAK;
-        superMarioAnimationOffset = 0;
+        superMauroAnimationOffset = 0;
         setColliderSize(16, 16);
         spriteHeight = 16;
     }
 
-    private void transformToSuperMario() {
-        superMario = true;
+    private void transformToSuperMauro() {
+        superMauro = true;
         impactStrength = ImpactStrength.STRONG;
-        superMarioAnimationOffset = -spriteSheet.getCols();
+        superMauroAnimationOffset = -spriteSheet.getCols();
         setColliderSize(16, 32);
         spriteHeight = 32;
     }
     
-    private void transformToInvicibleMario() {
-        invincibleMario = true;
-        invincibleMarioStartTime = Time.getCurrentTime();
+    private void transformToInvicibleMauro() {
+        invincibleMauro = true;
+        invincibleMauroStartTime = Time.getCurrentTime();
     }
 
-    private void transformToFireMario() {
-        fireMario = true;
-        fireMarioStartTime = Time.getCurrentTime();
+    private void transformToFireMauro() {
+        fireMauro = true;
+        fireMauroStartTime = Time.getCurrentTime();
     }
+    
     
     @Override
     public void kill() {
@@ -579,7 +538,9 @@ public class Mario extends Actor {
         Music.stop();
         Sound.play("die");
     }    
-
+   
+    
+    
     private void fire() {
         for (Fireball fireball : fireballs) {
             if (fireball.isFree()) {
@@ -591,7 +552,7 @@ public class Mario extends Actor {
         }
     }
 
-    // level cleared
+    // Nivel desde 0
     
     private int ip;
     private double waitTime;
@@ -682,7 +643,7 @@ public class Mario extends Actor {
         }
     }
     
-    // game started or when start next life
+    //Metodos para que el juego comience o cuando pasa la siguiente vida
 
     @Override
     protected void updateStartGame() {
@@ -694,7 +655,7 @@ public class Mario extends Actor {
         game.setGameState(LIVES_PRESENTATION);
     }
     
-    // move mario randomically in the title screen
+    //El mauro se mueve aleatoriamente en la pagina de inicio
     
     protected double direction = -1;
     private int nextWalkDuration = 60;

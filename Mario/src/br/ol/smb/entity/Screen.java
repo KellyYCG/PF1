@@ -69,8 +69,6 @@ public class Screen extends Entity {
             case LIVES_PRESENTATION:
                 game.playWorld();
                 break;
-            //case LEVEL_CLEARED:
-            //    break;
             case TIME_UP:
                 game.tryNextLife();
                 break;
@@ -87,7 +85,6 @@ public class Screen extends Entity {
         g.setColor(Color.BLACK);
         g.fillRect(0, 0, Display.SCREEN_WIDTH, Display.SCREEN_HEIGHT);
         
-        // g.drawImage(image, 0, 0, null);
         
         switch (game.getGameState()) {
             case LIVES_PRESENTATION:
@@ -95,8 +92,7 @@ public class Screen extends Entity {
                 bitmapFont.drawText(g, "*  " + game.getLiveStr(), 15, 13);
                 spriteSheet.drawTileByCell(g, 4505, 6, 6);
                 break;
-            //case LEVEL_CLEARED:
-            //    break;
+           
             case TIME_UP:
                 bitmapFont.drawText(g, "TIME UP", 12, 15);
                 break;
@@ -114,7 +110,6 @@ public class Screen extends Entity {
         setVisible(false);
         switch (newGameState) {
             case LIVES_PRESENTATION:
-            //case LEVEL_CLEARED:
             case TIME_UP:
             case GAME_OVER:
             case GAME_CLEARED:

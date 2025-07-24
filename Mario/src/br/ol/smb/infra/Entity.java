@@ -145,7 +145,7 @@ public class Entity implements Comparable<Entity> {
             case START_NEXT_LIFE: fixedUpdateStartGame(); break;
             case LIVES_PRESENTATION: fixedUpdateLivesPresentation(); break;
             case PLAYING: fixedUpdatePlaying(); break;
-            case MARIO_TRANSFORMING: fixedUpdateMarioTransforming(); break;
+            case MAURO_TRANSFORMING: fixedUpdateMauroTransforming(); break;
             case LEVEL_CLEARED: fixedUpdateLevelCleared(); break;
             case TIME_UP: fixedUpdateTimeUp(); break;
             case GAME_OVER: fixedUpdateGameOver(); break;
@@ -174,7 +174,7 @@ public class Entity implements Comparable<Entity> {
     protected void fixedUpdatePlaying() { 
     }
     
-    protected void fixedUpdateMarioTransforming() { 
+    protected void fixedUpdateMauroTransforming() { 
     }
     
     protected void fixedUpdateLevelCleared() { 
@@ -198,7 +198,7 @@ public class Entity implements Comparable<Entity> {
             case START_NEXT_LIFE: updateStartNextLife(); break;
             case LIVES_PRESENTATION: updateLivesPresentation(); break;
             case PLAYING: updatePlaying(); break;
-            case MARIO_TRANSFORMING: updateMarioTransforming(); break;
+            case MAURO_TRANSFORMING: updateMauroTransforming(); break;
             case LEVEL_CLEARED: updateLevelCleared(); break;
             case TIME_UP: updateTimeUp(); break;
             case GAME_OVER: updateGameOver(); break;
@@ -227,7 +227,7 @@ public class Entity implements Comparable<Entity> {
     protected void updatePlaying() { 
     }
     
-    protected void updateMarioTransforming() { 
+    protected void updateMauroTransforming() { 
     }
     
     protected void updateLevelCleared() { 
@@ -251,7 +251,7 @@ public class Entity implements Comparable<Entity> {
             case START_NEXT_LIFE: lateUpdateStartNextLife(); break;
             case LIVES_PRESENTATION: lateUpdateLivesPresentation(); break;
             case PLAYING: lateUpdatePlaying(); break;
-            case MARIO_TRANSFORMING: lateUpdateMarioTransforming(); break;
+            case MAURO_TRANSFORMING: lateUpdateMauroTransforming(); break;
             case LEVEL_CLEARED: lateUpdateLevelCleared(); break;
             case TIME_UP: lateUpdateTimeUp(); break;
             case GAME_OVER: lateUpdateGameOver(); break;
@@ -280,7 +280,7 @@ public class Entity implements Comparable<Entity> {
     protected void lateUpdatePlaying() { 
     }
     
-    protected void lateUpdateMarioTransforming() { 
+    protected void lateUpdateMauroTransforming() { 
     }
     
     protected void lateUpdateLevelCleared() { 

@@ -5,7 +5,7 @@ import br.ol.smb.entity.FadeEffect;
 import br.ol.smb.entity.Flag;
 import br.ol.smb.entity.HUD;
 import br.ol.smb.entity.Initializer;
-import br.ol.smb.entity.Mario;
+import br.ol.smb.entity.Mauro;
 import br.ol.smb.entity.OLPresents;
 import br.ol.smb.entity.Point;
 import br.ol.smb.entity.Screen;
@@ -22,7 +22,7 @@ public class Game {
 
     public static enum GameState { 
         INITIALIZING, OL_PRESENTS, TITLE, START_GAME, START_NEXT_LIFE, LIVES_PRESENTATION
-        , PLAYING, MARIO_TRANSFORMING, LEVEL_CLEARED, TIME_UP, GAME_OVER, GAME_CLEARED }
+        , PLAYING, MAURO_TRANSFORMING, LEVEL_CLEARED, TIME_UP, GAME_OVER, GAME_CLEARED }
     
     public static final boolean DRAW_DEBUG = false;
     public static final Vec2 GRAVITY = new Vec2(0, 0.5);
@@ -267,7 +267,7 @@ public class Game {
         addEntityLocal(flag = new Flag(this));
         addEntityLocal(new Tilemap(this));
         addEntityLocal(new BrickPushing(this));
-        addEntityLocal(new Mario(this));
+        addEntityLocal(new Mauro(this));
         addEntityLocal(new Screen(this));
         addEntityLocal(new HUD(this));
         addEntityLocal(new FadeEffect(this));
@@ -369,7 +369,7 @@ public class Game {
         resultEntities.clear();
         for (Entity entity : entities) {
             if (!(entity instanceof Camera)
-                    && !(entity instanceof Mario)
+                    && !(entity instanceof Mauro)
                     && area.intersects(entity.getCollider())) {
                 resultEntities.add(entity);
             }
@@ -445,13 +445,6 @@ public class Game {
             Sound.play("game_over");
             setGameState(GameState.GAME_OVER);
         
-//        world = nextWorld;
-//        lastCheckpoint = null;
-//        map.load(world);
-//        Music.stop();
-//        Music.play(world);
-//        timeLeft = timeLimit;
-//        setGameState(GameState.START_NEXT_LIFE);
     }
     
 }

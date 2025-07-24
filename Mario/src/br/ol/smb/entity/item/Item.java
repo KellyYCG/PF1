@@ -1,17 +1,17 @@
 package br.ol.smb.entity.item;
 
 import br.ol.smb.entity.Actor;
-import br.ol.smb.entity.Mario;
+import br.ol.smb.entity.Mauro;
 import br.ol.smb.infra.Entity;
 import br.ol.smb.infra.Tile;
 
 
 public class Item extends Actor {
     
-    protected Mario mario;
+    protected Mauro mauro;
     protected Tile tile;
     protected int endTileId;
-    protected boolean getByMario;
+    protected boolean getByMauro;
     protected String extraData;
     
     public Item() {
@@ -24,7 +24,7 @@ public class Item extends Actor {
     @Override
     public void start() {
         super.start();
-        mario = game.getEntity(Mario.class);
+        mauro = game.getEntity(Mauro.class);
         setVisible(true);
     }
     
@@ -57,27 +57,27 @@ public class Item extends Actor {
 
     @Override
     public void onHorizontalEntityCollision(Entity otherEntity) {
-        if (!getByMario && otherEntity instanceof Mario) {
-            Mario player = (Mario) otherEntity;
+        if (!getByMauro && otherEntity instanceof Mauro) {
+            Mauro player = (Mauro) otherEntity;
             if (!player.isDead()) {
-                getByMario = true;
-                onGetByMario();
+                getByMauro = true;
+                onGetByMauro();
             }
         }
     }
 
     @Override
     public void onVerticalEntityCollision(Entity otherEntity) {
-        if (!getByMario && otherEntity instanceof Mario) {
-            Mario player = (Mario) otherEntity;
+        if (!getByMauro && otherEntity instanceof Mauro) {
+            Mauro player = (Mauro) otherEntity;
             if (!player.isDead()) {
-                getByMario = true;
-                onGetByMario();
+                getByMauro = true;
+                onGetByMauro();
             }
         }
     }
 
-    protected void onGetByMario() {
+    protected void onGetByMauro() {
     }    
 
 }
